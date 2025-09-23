@@ -1,0 +1,14 @@
+# Node
+node_modules/
+dist/
+.env
+
+# Prisma
+prisma/dev.db
+prisma/generated/
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
