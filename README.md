@@ -17,21 +17,21 @@ ACP Cobranza busca empoderar a cada rol operativo con herramientas digitales que
 ---
 
 ## 🧩 Estructura del repositorio
-acp-cobranza/
-├── backend/           # API NestJS con Prisma y PostgreSQL
-│   ├── src/           # Código fuente (controladores, servicios, módulos)
-│   ├── prisma/        # Esquemas, migraciones y cliente Prisma
-│   ├── .env           # Variables de entorno (no se sube a GitHub)
-│   ├── package.json   # Scripts y dependencias
-│   └── README.md      # Documentación técnica del backend
-├── frontend-web/      # Dashboard web para roles administrativos
-│   └── .gitignore     # Exclusiones específicas del frontend
-├── app-movil/         # Aplicación móvil para cobradores y socios
-│   └── backend/       # API local para sincronización offline
-├── docs/              # Documentación técnica y funcional
-│   └── .gitignore     # Exclusiones de archivos temporales
-└── README.md          # Documentación general del sistema
 
+acp-cobranza/
+├── backend/ # API NestJS con Prisma y PostgreSQL
+│ ├── src/ # Código fuente (controladores, servicios, módulos)
+│ ├── prisma/ # Esquemas, migraciones y cliente Prisma
+│ ├── .env # Variables de entorno (no se sube a GitHub)
+│ ├── package.json # Scripts y dependencias
+│ └── README.md # Documentación técnica del backend
+├── frontend-web/ # Dashboard web para roles administrativos
+│ └── .gitignore # Exclusiones específicas del frontend
+├── app-movil/ # Aplicación móvil para cobradores y socios
+│ └── backend/ # API local para sincronización offline
+├── docs/ # Documentación técnica y funcional
+│ └── .gitignore # Exclusiones de archivos temporales
+└── README.md # Documentación general del sistema
 
 ---
 
@@ -63,7 +63,9 @@ npm run start:dev        # Ejecutar servidor en modo desarrollo
 ---
 
 ## 📚 Módulos planeados
+
 Cada módulo será validado con datos reales y simulados antes de marcarse como completo:
+
 - auth – Login, JWT, control de roles
 - usuarios – Registro de empleados, cálculo de sueldos
 - clientes – Alta, edición, historial y seguimiento
@@ -76,6 +78,7 @@ Cada módulo será validado con datos reales y simulados antes de marcarse como 
 - punto_equilibrio – Simulación financiera y proyección
 
 ## 🧠 Filosofía de desarrollo
+
 - Validación operativa antes de despliegue
 - Documentación profesional con estilo Word (Calibri/Arial, justificado)
 - Control de versiones con Git y GitHub
@@ -83,11 +86,14 @@ Cada módulo será validado con datos reales y simulados antes de marcarse como 
 - Empatía con los roles reales del negocio
 
 ## 🤝 Contribuir
+
 Este proyecto está en evolución constante. Si deseas colaborar:
+
 - Clona el repositorio
 - Crea una rama (dev, docs, test, etc.)
 - Realiza tus cambios y abre un Pull Request
-Se espera documentación clara, pruebas funcionales, y respeto por la arquitectura modular.
+  Se espera documentación clara, pruebas funcionales, y respeto por la arquitectura modular.
 
 ## 📄 Licencia
+
 Este proyecto está bajo una licencia libre para uso interno y educativo. Para usos comerciales o implementación externa, contactar directamente con la autora.
