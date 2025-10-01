@@ -17,6 +17,15 @@ interface UsuarioConRol {
   foto_path: string;
 }
 
+interface LoginDto {
+  usuario: string;
+  contrasenia: string;
+}
+
+interface TokenResponse {
+  access_token: string;
+}
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -24,10 +33,9 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async validarCredenciales(
-    usuario: string,
-    contrasenia: string,
-  ): Promise<{ access_token: string }> {
+  async login(credentials: LoginDto): Promise<TokenResponse> {
+    const { usuario, contrasenia } = credentials;
+
     const resultado = await this.db.query<UsuarioConRol>(
       `
       SELECT u.*, r.nombre_rol
@@ -37,6 +45,7 @@ export class AuthService {
       `,
       [usuario],
     );
+
     const usuarioEncontrado = resultado[0];
 
     if (!usuarioEncontrado || !usuarioEncontrado.activo) {
@@ -47,6 +56,7 @@ export class AuthService {
       contrasenia,
       usuarioEncontrado.contrasenia,
     );
+
     if (!coincide) {
       throw new UnauthorizedException('Contraseña incorrecta');
     }
@@ -54,7 +64,7 @@ export class AuthService {
     const payload = {
       sub: usuarioEncontrado.id_usuario,
       usuario: usuarioEncontrado.usuario,
-      rol: usuarioEncontrado.nombre_rol, // ← directamente desde la tabla roles
+      rol: usuarioEncontrado.nombre_rol,
       sucursal: usuarioEncontrado.id_sucursal,
     };
 
