@@ -4,9 +4,10 @@ import { AccessLoggerInterceptor } from './auth/access-loger.interceptor';
 import { DatabaseService } from './database.service';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['error', 'warn', 'log', 'debug', 'verbose'], // ✅ Activa todos los niveles de log
+  });
 
-  // ✅ Registrar interceptor globalmente
   const dbService = app.get(DatabaseService);
   app.useGlobalInterceptors(new AccessLoggerInterceptor(dbService));
 

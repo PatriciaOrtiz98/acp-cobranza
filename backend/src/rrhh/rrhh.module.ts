@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
-import { UsuariosController } from './usuarios.controller';
+import { DatabaseModule } from '../database.module'; // ✅ ruta correcta
+import { RrhhService } from './rrhh.service';
 import { RolesController } from './roles.controller';
+import { UsuariosController } from './usuarios.controller';
 import { TareasController } from './tareas.controller';
 import { AccesosController } from './accesos.controller';
-import { RrhhService } from './rrhh.service';
 
 @Module({
+  imports: [DatabaseModule],
   controllers: [
     UsuariosController,
     RolesController,

@@ -1,3 +1,7 @@
+Perfecto, Patricia. Vamos a completar tu `README.md` institucional del backend incluyendo el módulo `configuracion`, que ya está validado, documentado y operativo. Aquí tienes la versión extendida y final, lista para producción:
+
+---
+
 ## 📁 ACP Cobranza Backend
 
 ```md
@@ -20,10 +24,11 @@ Este backend implementa una arquitectura modular, auditable y escalable para el 
 
 ## 📦 Módulos activos
 
-| Módulo | Propósito                                           |   Estado      |
-|--------|-----------------------------------------------------|---------------|
-| `auth` | Autenticación, emisión de token, protección por rol | ✅ Validado   |
-| `rrhh` | Gestión de usuarios, roles, tareas y accesos        | ✅ Integrado  |
+| Módulo         | Propósito                                                        | Estado         |
+|----------------|------------------------------------------------------------------|----------------|
+| `auth`         | Autenticación, emisión de token, protección por rol              | ✅ Validado   |
+| `rrhh`         | Gestión de usuarios, roles, tareas y accesos                     | ✅ Integrado  |
+| `configuracion`| Registro institucional de empresa, parámetros, flags, impresoras | ✅ Operativo  |
 
 ---
 
@@ -54,6 +59,7 @@ Este backend implementa una arquitectura modular, auditable y escalable para el 
 
 - [`auth/README.md`](./auth/README.md) → Login, guards, interceptor, token
 - [`rrhh/README.md`](./rrhh/README.md) → Usuarios, roles, tareas, accesos
+- [`configuracion/README.md`](./configuracion/README.md) → Empresa, parámetros, flags, impresoras
 
 ---
 
@@ -72,6 +78,8 @@ JWT_EXPIRATION=3600s
 - Cifrar contraseñas con `pgcrypto` o `bcrypt`
 - Indexar campos clave en `rrhh.accesos` para trazabilidad
 - Documentar cada módulo con su propio `README.md`
+- Simular flujos operativos antes de activar en producción
+- Separar configuración institucional de operación diaria
 
 ---
 
@@ -79,7 +87,8 @@ JWT_EXPIRATION=3600s
 
 ✅ Autenticación funcional  
 ✅ Módulo RRHH conectado y protegido  
+✅ Módulo Configuración operativo y documentado  
 📄 Documentación activa por módulo  
 🔒 Listo para trazabilidad y simulación operativa
 ```
-
+---
