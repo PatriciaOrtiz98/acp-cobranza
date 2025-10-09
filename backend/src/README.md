@@ -1,9 +1,3 @@
-Perfecto, Patricia. Vamos a completar tu `README.md` institucional del backend incluyendo el módulo `configuracion`, que ya está validado, documentado y operativo. Aquí tienes la versión extendida y final, lista para producción:
-
----
-
-## 📁 ACP Cobranza Backend
-
 ```md
 # 🧱 ACP Cobranza – Backend Modular
 
@@ -19,16 +13,19 @@ Este backend implementa una arquitectura modular, auditable y escalable para el 
 - **Autenticación**: JWT con roles y sucursales
 - **Protección de rutas**: Guards por token y rol
 - **Trazabilidad**: Interceptor de accesos operativos
+- **Estructura modular**: Cada carpeta en `src/` representa un módulo funcional
 
 ---
 
 ## 📦 Módulos activos
 
-| Módulo         | Propósito                                                        | Estado         |
-|----------------|------------------------------------------------------------------|----------------|
-| `auth`         | Autenticación, emisión de token, protección por rol              | ✅ Validado   |
-| `rrhh`         | Gestión de usuarios, roles, tareas y accesos                     | ✅ Integrado  |
-| `configuracion`| Registro institucional de empresa, parámetros, flags, impresoras | ✅ Operativo  |
+| Módulo           | Propósito                                                        | Estado         |
+|------------------|------------------------------------------------------------------|----------------|
+| `auth`           | Autenticación, emisión de token, protección por rol              | ✅ Validado    |
+| `rrhh`           | Gestión de usuarios, roles, tareas y accesos                     | ✅ Integrado   |
+| `configuracion`  | Registro institucional de empresa, parámetros, flags, impresoras | ✅ Operativo   |
+| `api`            | Registro de sucursales con trazabilidad por usuario              | ✅ Funcional   |
+| `auditoria`      | Consulta de accesos registrados por IP, módulo y usuario         | ✅ Activo      |
 
 ---
 
@@ -60,6 +57,9 @@ Este backend implementa una arquitectura modular, auditable y escalable para el 
 - [`auth/README.md`](./auth/README.md) → Login, guards, interceptor, token
 - [`rrhh/README.md`](./rrhh/README.md) → Usuarios, roles, tareas, accesos
 - [`configuracion/README.md`](./configuracion/README.md) → Empresa, parámetros, flags, impresoras
+- [`api/README.md`](./api/README.md) → Registro de sucursales
+- [`auditoria/README.md`](./auditoria/README.md) → Consulta de accesos registrados
+- [`src/README.md`](./src/README.md) → Núcleo del backend, integración y arranque
 
 ---
 
@@ -80,6 +80,8 @@ JWT_EXPIRATION=3600s
 - Documentar cada módulo con su propio `README.md`
 - Simular flujos operativos antes de activar en producción
 - Separar configuración institucional de operación diaria
+- Usar `AccessLoggerInterceptor` para registrar accesos automáticamente
+- Centralizar configuración en `ConfigModule` y `.env`
 
 ---
 
@@ -88,7 +90,9 @@ JWT_EXPIRATION=3600s
 ✅ Autenticación funcional  
 ✅ Módulo RRHH conectado y protegido  
 ✅ Módulo Configuración operativo y documentado  
+✅ Módulo API funcional y trazable  
+✅ Módulo Auditoría activo y consultable  
 📄 Documentación activa por módulo  
 🔒 Listo para trazabilidad y simulación operativa
 ```
----
+

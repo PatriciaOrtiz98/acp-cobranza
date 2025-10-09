@@ -9,14 +9,19 @@ Este módulo gestiona la autenticación, autorización y trazabilidad de accesos
 
 ## 📂 Estructura del módulo
 
-| Archivo                        | Descripción                                      |
-|-------------------------------|--------------------------------------------------|
-| `auth.controller.ts`          | Endpoint de login y validación de token          |
-| `auth.service.ts`             | Generación de JWT, validación de usuario         |
-| `jwt.strategy.ts`             | Estrategia de autenticación basada en JWT        |
-| `roles.guard.ts`              | Protección de rutas según rol                    |
-| `roles.decorator.ts`          | Decorador `@Roles()` para definir acceso         |
-| `access-logger.interceptor.ts`| Interceptor que registra accesos en la base de datos |
+| Archivo                          | Descripción                                                  |
+|----------------------------------|--------------------------------------------------------------|
+| `auth.controller.ts`            | Endpoint de login y entrega de token JWT                     |
+| `auth.service.ts`               | Validación de credenciales y generación de token             |
+| `jwt-strategy.ts`               | Estrategia Passport para validar token JWT                   |
+| `jwt-auth.guard.ts`             | Guard para rutas protegidas con JWT                         |
+| `auth.guard.ts`                 | Guard básico para validación manual de token                 |
+| `roles.guard.ts`                | Validación de acceso por rol declarado                      |
+| `roles.decorator.ts`            | Decorador `@Roles()` para declarar roles permitidos          |
+| `access-loger.interceptor.ts`   | Interceptor que registra accesos en la tabla `rrhh.accesos`  |
+| `types.ts`                      | Interface extendida `RequestWithUser` para contexto completo|
+| `user-jwt.interface.ts`         | Payload del token JWT con sucursal y rol                     |
+| `request-with-user-interface.ts`| Interface para extender `Request` con usuario autenticado    |
 
 ---
 
@@ -37,7 +42,8 @@ Este módulo gestiona la autenticación, autorización y trazabilidad de accesos
   }
   ```
 - **Estrategia**: JWT firmado con `JWT_SECRET`
-- **Expiración**: configurable vía `.env`
+- **Expiración**: configurable vía `.env` (`JWT_EXPIRATION`)
+- **Validación**: vía `bcrypt.compare()` contra contraseña cifrada con `pgcrypto`
 
 ---
 
@@ -87,9 +93,9 @@ Este módulo gestiona la autenticación, autorización y trazabilidad de accesos
 
 ## 🔗 Integración con otros módulos
 
-- `rrhh`: consume roles y usuarios
+- `rrhh`: consume roles y usuarios para validación
 - `nomina`: usa rol y sucursal para cálculo de bonificaciones
-- `auditoria`: consulta accesos registrados
+- `auditoria`: consulta accesos registrados en `rrhh.accesos`
 - `ventas`: valida permisos de conferencistas y vendedores
 
 ---
@@ -117,12 +123,14 @@ JWT_EXPIRATION=3600s
 ## 🧠 Recomendaciones técnicas
 
 - Validar existencia de usuario y rol antes de emitir token
-- Cifrar contraseñas con `pgcrypto`:
+- Cifrar contraseñas con `pgcrypto` desde SQL:
   ```sql
   crypt(contrasenia, gen_salt('bf'))
   ```
 - Indexar `fecha`, `usuario`, `modulo` en `rrhh.accesos` para rendimiento
 - Usar `AccessLoggerInterceptor` solo en rutas protegidas si se desea trazabilidad selectiva
+- Separar roles operativos (`Secretaria`, `Supervisor`) de administrativos (`Administrador`)
+- Centralizar configuración en `.env` y `ConfigModule`
 
 ---
 
