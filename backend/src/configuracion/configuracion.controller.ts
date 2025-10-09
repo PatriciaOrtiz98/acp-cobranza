@@ -6,12 +6,17 @@ import { ParametroVersionadoDto } from './dto/parametros-versionados.dto';
 import { FlagDto } from './dto/flags.dto';
 import { ImpresoraDto } from './dto/impresoras.dto';
 import { ImpresoraAsignacionDto } from './dto/impresora-asignacion.dto';
+import { CreateRolDto } from '../rrhh/dto/create-rol.dto';
+import { RrhhService } from '../rrhh/rrhh.service';
 import type { RequestWithUser } from '../auth/types/request-with-user.interface';
 import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('configuracion')
 export class ConfiguracionController {
-  constructor(private readonly service: ConfiguracionService) {}
+  constructor(
+    private readonly service: ConfiguracionService,
+    private readonly rrhhService: RrhhService,
+  ) {}
 
   @Post('empresa')
   @UseGuards(AuthGuard)
@@ -56,5 +61,19 @@ export class ConfiguracionController {
   @Post('impresoras/asignacion')
   asignarImpresora(@Body() dto: ImpresoraAsignacionDto) {
     return this.service.asignarImpresora(dto);
+  }
+
+  // 🛡️ Solo administrador puede crear roles
+  @Post('roles')
+  @UseGuards(AuthGuard)
+  crearRol(@Body() dto: CreateRolDto, @Req() req: RequestWithUser) {
+    const usuario = req.user.usuario;
+    return this.rrhhService.crearRol(dto, usuario);
+  }
+
+  // 📊 Consulta institucional de roles activos
+  @Get('roles')
+  listarRoles() {
+    return this.rrhhService.listarRoles();
   }
 }

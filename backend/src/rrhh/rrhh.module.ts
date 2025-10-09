@@ -15,5 +15,6 @@ import { AccesosController } from './accesos.controller';
     AccesosController,
   ],
   providers: [RrhhService],
+  exports: [RrhhService],
 })
 export class RrhhModule {}
