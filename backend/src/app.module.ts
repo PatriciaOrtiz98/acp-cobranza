@@ -11,6 +11,10 @@ import { ConfiguracionModule } from './configuracion/configuracion.module';
 import { ApiModule } from './api/api.module'; // ✅ Nuevo módulo para schema api
 import { InventarioModule } from './inventario/inventario.module';
 import { ClientesModule } from './clientes/clientes.module';
+import { VentasModule } from './ventas/ventas.module';
+import { PagosClienteModule } from './ventas/pagos-cliente.module';
+import { DetallesVentaModule } from './ventas/detalles-venta.module';
+import { ParametrosModule } from './ventas/parametros.module';
 
 @Module({
   imports: [
@@ -41,6 +45,11 @@ import { ClientesModule } from './clientes/clientes.module';
     InventarioModule,
     // 🛒 Módulo de gestión de clientes
     ClientesModule,
+    // 🛍️ Módulo de ventas y facturación
+    VentasModule,
+    PagosClienteModule,
+    DetallesVentaModule,
+    ParametrosModule,
   ],
   controllers: [AppController],
   providers: [AppService],

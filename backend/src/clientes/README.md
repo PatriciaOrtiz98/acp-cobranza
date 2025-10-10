@@ -22,7 +22,7 @@ El módulo `clientes` permite registrar, consultar y auditar personas físicas o
 | `referencia_personal` | TEXT       | Persona conocida o vínculo    |
 | `casa_propia`         | BOOLEAN    | TRUE = propia, FALSE = renta  |
 | `descripcion_casa`    | TEXT       | Características del domicilio |
-| `referencias_cercanas`| TEXT      | Puntos de referencia          |
+| `referencias_cercanas`| TEXT       | Puntos de referencia          |
 | `latitud`             | DECIMAL    | Coordenada geográfica         |
 | `longitud`            | DECIMAL    | Coordenada geográfica         |
 | `fecha_creacion`      | TIMESTAMP  | Registro automático           |
