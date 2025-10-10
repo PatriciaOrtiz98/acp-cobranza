@@ -1,0 +1,10 @@
+export { Proveedor } from './proveedor.entity';
+export { Categoria } from './categoria.entity';
+export { ProductoUnitario } from './producto-unitario.entity';
+export { ProductoCompuesto } from './producto-compuesto.entity';
+export { CompuestoDetalle } from './compuesto-detalle.entity';
+export { OrdenCompra } from './orden-compra.entity';
+export { OrdenCompraDetalle } from './orden-compra-detalle.entity';
+export { Recepcion } from './recepcion.entity';
+export { Movimiento } from './movimiento.entity';
+export { DetalleMovimiento } from './detalle-movimiento.entity';
