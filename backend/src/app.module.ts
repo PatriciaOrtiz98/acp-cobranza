@@ -10,6 +10,7 @@ import { RrhhModule } from './rrhh/rrhh.module';
 import { ConfiguracionModule } from './configuracion/configuracion.module';
 import { ApiModule } from './api/api.module'; // ✅ Nuevo módulo para schema api
 import { InventarioModule } from './inventario/inventario.module';
+import { ClientesModule } from './clientes/clientes.module';
 
 @Module({
   imports: [
@@ -38,6 +39,8 @@ import { InventarioModule } from './inventario/inventario.module';
 
     // 🏬 Módulo de inventario y gestión de producto
     InventarioModule,
+    // 🛒 Módulo de gestión de clientes
+    ClientesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
