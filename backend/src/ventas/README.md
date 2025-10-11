@@ -17,7 +17,6 @@ src/ventas/
 ├── detalles-venta.service.ts
 ├── pagos-cliente.controller.ts
 ├── pagos-cliente.entity.ts
-├── pagos-cliente.module.ts
 ├── pagos-cliente.service.ts
 ├── pagos-conekta.ts
 ├── parametros.controller.ts
