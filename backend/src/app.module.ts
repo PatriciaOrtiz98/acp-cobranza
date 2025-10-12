@@ -16,6 +16,7 @@ import { PagosClienteModule } from './ventas/pagos-cliente.module';
 import { DetallesVentaModule } from './ventas/detalles-venta.module';
 import { ParametrosModule } from './ventas/parametros.module';
 import { RutasModule } from './rutas/rutas.module';
+import { CobrosModule } from './cobros/cobros.module';
 
 @Module({
   imports: [
@@ -53,6 +54,8 @@ import { RutasModule } from './rutas/rutas.module';
     ParametrosModule,
     // 🚚 Módulo de gestión de rutas
     RutasModule,
+    // 💰 Módulo de cobros y pagos
+    CobrosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
