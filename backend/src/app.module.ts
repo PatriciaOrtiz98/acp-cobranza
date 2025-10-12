@@ -17,6 +17,7 @@ import { DetallesVentaModule } from './ventas/detalles-venta.module';
 import { ParametrosModule } from './ventas/parametros.module';
 import { RutasModule } from './rutas/rutas.module';
 import { CobrosModule } from './cobros/cobros.module';
+import { SociosModule } from './socios/socios.module';
 
 @Module({
   imports: [
@@ -56,6 +57,8 @@ import { CobrosModule } from './cobros/cobros.module';
     RutasModule,
     // 💰 Módulo de cobros y pagos
     CobrosModule,
+    // 🤝 Módulo de gestión de socios
+    SociosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
