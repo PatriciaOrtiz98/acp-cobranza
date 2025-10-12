@@ -18,6 +18,7 @@ import { ParametrosModule } from './ventas/parametros.module';
 import { RutasModule } from './rutas/rutas.module';
 import { CobrosModule } from './cobros/cobros.module';
 import { SociosModule } from './socios/socios.module';
+import { NominaModule } from './nomina/nomina.module';
 
 @Module({
   imports: [
@@ -59,6 +60,8 @@ import { SociosModule } from './socios/socios.module';
     CobrosModule,
     // 🤝 Módulo de gestión de socios
     SociosModule,
+    // 🏦 Módulo de nómina y pagos a empleados
+    NominaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
