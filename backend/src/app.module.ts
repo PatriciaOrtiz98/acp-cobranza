@@ -19,6 +19,7 @@ import { RutasModule } from './rutas/rutas.module';
 import { CobrosModule } from './cobros/cobros.module';
 import { SociosModule } from './socios/socios.module';
 import { NominaModule } from './nomina/nomina.module';
+import { PuntoEquilibrioModule } from './punto_equilibrio/punto-equilibrio.module';
 
 @Module({
   imports: [
@@ -62,6 +63,8 @@ import { NominaModule } from './nomina/nomina.module';
     SociosModule,
     // 🏦 Módulo de nómina y pagos a empleados
     NominaModule,
+    // ⚖️ Módulo de análisis de punto de equilibrio
+    PuntoEquilibrioModule,
   ],
   controllers: [AppController],
   providers: [AppService],
