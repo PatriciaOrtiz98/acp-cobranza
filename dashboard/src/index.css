@@ -1,0 +1,9 @@
+@import "@fontsource/playfair-display";
+@import "@fontsource/montserrat";
+@import "@fontsource/roboto";
+
+html, body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
