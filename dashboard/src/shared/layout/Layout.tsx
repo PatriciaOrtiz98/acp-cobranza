@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 
 import '../../styles/layout.css';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout() {
   const [sidebarOpen] = useState(true);
 
   return (
@@ -19,7 +20,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         <div className="flex flex-col flex-1 overflow-hidden">
           <main className="flex-1 overflow-y-auto p-6 bg-[#F9F9F9]">
-            {children}
+            <Outlet />
           </main>
 
           {/* Footer institucional alineado al contenido */}

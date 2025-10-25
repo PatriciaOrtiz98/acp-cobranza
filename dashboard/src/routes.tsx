@@ -1,22 +1,24 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './shared/layout/Layout';
-
-function Placeholder() {
-  return (
-    <div className="bg-white p-6 rounded shadow text-[#0A1F2D] font-montserrat">
-      <h2 className="text-2xl font-bold mb-2">Bienvenida a ACP Cobranza</h2>
-      <p className="text-[#A5A5A5]">Este es un módulo temporal para validar el layout institucional.</p>
-    </div>
-  );
-}
+import Login from './modules/login/login';
+import DashboardAdmin from './modules/admin/DashboardAdmin'; // ejemplo
+import RutaProtegida from './modules/login/RutaProtegida'; // lo creamos abajo
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Placeholder />} />
+        {/* Ruta pública: Login */}
+        <Route path="/" element={<Login />} />
+
+        {/* Rutas protegidas con Layout */}
+        <Route element={<RutaProtegida><Layout /></RutaProtegida>}>
+          <Route path="/admin/dashboard" element={<DashboardAdmin />} />
+          {/* Agrega aquí más rutas protegidas por rol */}
         </Route>
+
+        {/* Catch-all */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );

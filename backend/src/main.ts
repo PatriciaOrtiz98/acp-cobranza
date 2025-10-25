@@ -5,7 +5,13 @@ import { DatabaseService } from './database.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    logger: ['error', 'warn', 'log', 'debug', 'verbose'], // ✅ Activa todos los niveles de log
+    logger: ['error', 'warn', 'log', 'debug', 'verbose'],
+  });
+
+  // ✅ Permitir solicitudes desde el frontend
+  app.enableCors({
+    origin: 'http://localhost:5173',
+    credentials: true,
   });
 
   const dbService = app.get(DatabaseService);
